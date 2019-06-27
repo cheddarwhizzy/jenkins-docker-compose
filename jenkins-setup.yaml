@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  jenkins:
+    container_name: jenkins-setup
+    build: 
+      context: .
+      dockerfile: Dockerfile.jenkins_setup
+    environment:
+      JENKINS_USER: ${JENKINS_USER}
+      JENKINS_PASS: ${JENKINS_PASS}
+    volumes:
+      - ./build/data:/var/jenkins_home
+    ports:
+      - 8080:8080
